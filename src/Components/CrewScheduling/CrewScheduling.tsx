@@ -9,6 +9,7 @@ import styles from "./CrewScheduling.module.css"
 import dayjs from "dayjs"
 import { toJS } from "mobx"
 import Receipt from "../Receipt/Receipt"
+import Insights from "../Insights/Insights"
 
 const CrewScheduling = () => {
   const ScheduleForm = useForm()
@@ -97,9 +98,12 @@ const CrewScheduling = () => {
           </Box>
         </form>
       </FormProvider>
-      <Box>
-        <Receipt data={receipt} />
-      </Box>
+      {Object.keys(receipt).length > 0 && (
+        <Box>
+          <Receipt data={receipt} />
+          <Insights data={receipt} />
+        </Box>
+      )}
     </Box>
   )
 }
