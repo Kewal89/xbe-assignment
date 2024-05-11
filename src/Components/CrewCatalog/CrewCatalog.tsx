@@ -1,26 +1,38 @@
-import { Box, Button } from "@mui/material"
+import { Box, Button, SxProps } from "@mui/material"
 import { DataGrid, GridColDef } from "@mui/x-data-grid"
 import { observer } from "mobx-react"
 import AppStore from "../../Utils/Stores/AppStore"
 import styles from "./CrewCatalog.module.css"
+
+const tableSX: SxProps = {
+  "&": {
+    borderRadius: "0 0 10px 10px",
+  },
+}
 
 const CrewCatalog = () => {
   const columnHeader: Array<GridColDef> = [
     {
       field: "id",
       headerName: "ID",
-      width: 100,
+      width: 75,
+      headerAlign: "center",
+      align: "center",
     },
     {
       field: "class",
       headerName: "Classification",
-      width: 150,
+      minWidth: 200,
+      headerAlign: "left",
+      align: "left",
     },
 
     {
       field: "ratePerHour",
       headerName: "Rate per Hour (in ₹)",
-      width: 150,
+      minWidth: 150,
+      headerAlign: "center",
+      align: "center",
     },
   ]
 
@@ -35,7 +47,7 @@ const CrewCatalog = () => {
           Create Job
         </Button>
       </Box>
-      <DataGrid rows={AppStore.crewData} columns={columnHeader} />
+      <DataGrid rows={AppStore.crewData} columns={columnHeader} sx={tableSX} hideFooterSelectedRowCount />
     </Box>
   )
 }

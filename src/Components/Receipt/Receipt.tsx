@@ -20,7 +20,7 @@ const Receipt = ({ data }: any) => {
         <Box className={styles.TotalRates}>
           <Box className={styles.ReceiptItem}>
             <span className={styles.Operator}>Total</span>
-            <span className={styles.Charges}>₹ {total}</span>
+            <span className={styles.Charges}>₹ {total.toFixed(2)}</span>
           </Box>
         </Box>
       </Box>

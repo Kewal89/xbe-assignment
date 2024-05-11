@@ -54,6 +54,7 @@ const CrewScheduling = () => {
 
   const onClickReset = () => {
     remove()
+    setReceipt({})
     onClickAddCrew()
   }
 
@@ -63,9 +64,9 @@ const CrewScheduling = () => {
     const crewRates = AppStore.crewData
     const totalCosts: Record<string, number> = {}
 
-    crewRates.forEach((rate) => {
-      totalCosts[rate.class] = 0
-    })
+    // crewRates.forEach((rate) => {
+    //   totalCosts[rate.class] = 0
+    // })
 
     data.jobs.forEach((crew: any) => {
       const { CrewName, StartTime, EndTime } = crew
@@ -74,12 +75,13 @@ const CrewScheduling = () => {
       if (rate) {
         const hoursWorked = Math.max(0, EndTime.diff(StartTime, "hour", true))
         const cost = hoursWorked * rate.ratePerHour
-        totalCosts[CrewName] += parseFloat(cost.toFixed(3))
+        // console.info("Data :", cost)
+        totalCosts[CrewName] = (totalCosts[CrewName] || 0) + parseFloat(cost.toFixed(3))
       }
     })
 
     setReceipt(totalCosts)
-    console.info("Data :", totalCosts)
+    // console.info("Data :", totalCosts)
   }
 
   return (
@@ -103,10 +105,10 @@ const CrewScheduling = () => {
               Add Crew
             </Button>
             <Box display={"flex"} columnGap={"10px"}>
-              <Button variant="outlined" onClick={onClickReset}>
+              <Button variant="outlined" color="error" onClick={onClickReset}>
                 Clear
               </Button>
-              <Button variant="contained" type="submit">
+              <Button variant="contained" color="success" type="submit">
                 Calculate
               </Button>
             </Box>
