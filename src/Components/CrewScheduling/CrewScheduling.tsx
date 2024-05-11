@@ -17,13 +17,14 @@ const CrewScheduling = () => {
 
   const { handleSubmit, control, watch } = ScheduleForm
 
-  const { fields, append } = useFieldArray<any>({
+  const { fields, append, remove } = useFieldArray<any>({
     name: "jobs",
     control,
+    shouldUnregister: true,
   })
 
   useEffect(() => {
-    if (fields.length === 0) append({ CrewName: "", StartTime: dayjs(), EndTime: dayjs() })
+    if (fields.length === 0) append({ CrewName: "", StartTime: dayjs(), EndTime: dayjs().add(1, "minute") })
   }, [])
 
   const CrewNames = useMemo(() => {
@@ -47,8 +48,13 @@ const CrewScheduling = () => {
     label: "End Time",
   }
 
-  const onClickAddJob = () => {
-    append({ CrewName: "", StartTime: dayjs(), EndTime: dayjs() })
+  const onClickAddCrew = () => {
+    append({ CrewName: "", StartTime: dayjs(), EndTime: dayjs().add(1, "minute") })
+  }
+
+  const onClickReset = () => {
+    remove()
+    onClickAddCrew()
   }
 
   const onSubmit = (data: any) => {
@@ -93,8 +99,17 @@ const CrewScheduling = () => {
             })}
           </Box>
           <Box display={"flex"} justifyContent={"space-between"} mt={"25px"}>
-            <Button onClick={onClickAddJob}>Add Job</Button>
-            <Button type="submit">Calculate</Button>
+            <Button variant="outlined" onClick={onClickAddCrew}>
+              Add Crew
+            </Button>
+            <Box display={"flex"} columnGap={"10px"}>
+              <Button variant="outlined" onClick={onClickReset}>
+                Clear
+              </Button>
+              <Button variant="contained" type="submit">
+                Calculate
+              </Button>
+            </Box>
           </Box>
         </form>
       </FormProvider>

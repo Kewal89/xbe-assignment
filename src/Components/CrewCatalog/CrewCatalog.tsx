@@ -31,7 +31,9 @@ const CrewCatalog = () => {
   return (
     <Box className={styles.CatalogRoot}>
       <Box className={styles.TableHeader}>
-        <Button onClick={onClickSidePanel}>Create Job</Button>
+        <Button variant="outlined" onClick={onClickSidePanel}>
+          Create Job
+        </Button>
       </Box>
       <DataGrid rows={AppStore.crewData} columns={columnHeader} />
     </Box>
