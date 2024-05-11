@@ -37,6 +37,7 @@ const Insights = ({ data }: any) => {
 
   return (
     <Box className={styles.InsightsRoot}>
+      <h2>Insights</h2>
       {insightsData.length > 0 && (
         <PieChart series={[{ data: insightsData, innerRadius: 80 }]} {...size}>
           <PieCenterLabel>Charges</PieCenterLabel>

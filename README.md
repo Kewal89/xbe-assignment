@@ -1,46 +1,38 @@
-# Getting Started with Create React App
+# Setup and Running Instructions
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Setting up environment for Frontend
 
-## Available Scripts
+1. Open a terminal inside the project folder
+2. Run `yarn install` (Recommended) or `npm install` to install required `node_modules`
+3. Run `yarn start` (Recommended) to start the Frontend Project.
 
-In the project directory, you can run:
 
-### `npm start`
+## 1. Introduction
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+a. The Problem Statement was to create a simple Single page application that calculates and displays labor costs based on crew schedules.
+...
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 2. Architecture
 
-### `npm test`
+- The Architecture for the solution is straight forward.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. User will open the the base url.
+2. The base url will show a Table aka Catalog of all the Crew along with their Hourly rates.
+3. User will click on Create Job to create a Job.
+4. User will have to fill the form as per the required and click on calculate.
+5. User will now be able to see a Receipt for the total charges.
+6. User can also see a Pie Chart displaying the Insights for the Job.
 
-### `npm run build`
+## 3. Technology Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. `React.js` for Frontend
+2. `TypeScript` for Type checking
+3. `Node.js` for Local development
+4. `Mobx` for Global State Management.
+5. `Git` for version controlling.
+6. `Github` for Code commit and Deployment.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 4. Known Limitations (Time Constraints)
+1. Save Jobs.
+2. Persist Jobs when page refreshed.
+3. Show additonal types of Insights for users.
