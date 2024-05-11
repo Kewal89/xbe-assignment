@@ -47,7 +47,16 @@ const CrewCatalog = () => {
           Create Job
         </Button>
       </Box>
-      <DataGrid rows={AppStore.crewData} columns={columnHeader} sx={tableSX} hideFooterSelectedRowCount />
+      <DataGrid
+        rows={AppStore.crewData}
+        columns={columnHeader}
+        sx={tableSX}
+        hideFooterSelectedRowCount
+        pageSizeOptions={[5, 10, 25]}
+        initialState={{
+          pagination: { paginationModel: { pageSize: 10 } },
+        }}
+      />
     </Box>
   )
 }
