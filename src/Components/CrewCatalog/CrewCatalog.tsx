@@ -1,4 +1,4 @@
-import { Box } from "@mui/material"
+import { Box, Button } from "@mui/material"
 import { DataGrid, GridColDef } from "@mui/x-data-grid"
 import { observer } from "mobx-react"
 import AppStore from "../../Utils/Stores/AppStore"
@@ -24,8 +24,15 @@ const CrewCatalog = () => {
     },
   ]
 
+  const onClickSidePanel = () => {
+    AppStore.setSidePanel(true)
+  }
+
   return (
     <Box className={styles.CatalogRoot}>
+      <Box className={styles.TableHeader}>
+        <Button onClick={onClickSidePanel}>Create Job</Button>
+      </Box>
       <DataGrid rows={AppStore.crewData} columns={columnHeader} />
     </Box>
   )

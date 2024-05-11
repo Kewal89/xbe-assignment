@@ -4,6 +4,12 @@ import { TCrewData } from "./Types/CrewData"
 import AppStore from "./Utils/Stores/AppStore"
 import { observer } from "mobx-react"
 import CrewCatalog from "./Components/CrewCatalog/CrewCatalog"
+import styles from "./App.module.css"
+import Header from "./Components/Header/Header"
+import "@fontsource/inter/300.css"
+import "@fontsource/inter/400.css"
+import "@fontsource/inter/500.css"
+import "@fontsource/inter/700.css"
 
 const crewJson: Array<TCrewData> = [
   {
@@ -24,8 +30,11 @@ const App = () => {
   }, [])
 
   return (
-    <Box>
-      <CrewCatalog />
+    <Box className={styles.AppRoot}>
+      <Header />
+      <Box className={styles.MainContainer}>
+        <CrewCatalog />
+      </Box>
     </Box>
   )
 }

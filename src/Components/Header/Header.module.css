@@ -1,0 +1,10 @@
+.HeaderRoot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #e5e6e8;
+  padding: 8px 16px;
+}
