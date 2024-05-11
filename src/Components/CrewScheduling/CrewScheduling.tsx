@@ -8,6 +8,7 @@ import TimePicker from "../Common/TimePicker"
 import styles from "./CrewScheduling.module.css"
 import dayjs from "dayjs"
 import { toJS } from "mobx"
+import Receipt from "../Receipt/Receipt"
 
 const CrewScheduling = () => {
   const ScheduleForm = useForm()
@@ -63,17 +64,21 @@ const CrewScheduling = () => {
       const { CrewName, StartTime, EndTime } = crew
       const rate = crewRates.find((rate: any) => rate.class === CrewName)
 
-
       if (rate) {
-        const hoursWorked = EndTime.diff(StartTime, "hour")
-        totalCosts[CrewName] += hoursWorked * rate.ratePerHour
+        const hoursWorked = Math.max(0, EndTime.diff(StartTime, "hour", true))
+        const cost = hoursWorked * rate.ratePerHour
+        totalCosts[CrewName] += parseFloat(cost.toFixed(3))
       }
     })
+
+    setReceipt(totalCosts)
+    console.info("Data :", totalCosts)
   }
 
   return (
     <Box className={styles.ScheduleRoot}>
       <FormProvider {...ScheduleForm}>
+        <Box>Job Sheet Generator</Box>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Box className={styles.Form}>
             {fields.map((field, index: number) => {
@@ -81,7 +86,7 @@ const CrewScheduling = () => {
                 <Box display={"flex"} columnGap={"10px"} mb={"10px"} key={field.id}>
                   <Dropdown formKey={`jobs.${index}.CrewName`} form={DDForm} />
                   <TimePicker formKey={`jobs.${index}.StartTime`} form={StartTime} />
-                  <TimePicker formKey={`jobs.${index}.EndTime`} form={EndTime} minTime={watch(`StartTime.${index}`)} />
+                  <TimePicker formKey={`jobs.${index}.EndTime`} form={EndTime} minTime={watch(`jobs.${index}.StartTime`)} />
                 </Box>
               )
             })}
@@ -93,7 +98,7 @@ const CrewScheduling = () => {
         </form>
       </FormProvider>
       <Box>
-
+        <Receipt data={receipt} />
       </Box>
     </Box>
   )
