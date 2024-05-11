@@ -14,5 +14,5 @@ code {
 
 * {
   box-sizing: border-box;
-  font-family: Inter;
+  font-family: Inter !important;
 }

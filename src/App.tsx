@@ -10,6 +10,8 @@ import "@fontsource/inter/300.css"
 import "@fontsource/inter/400.css"
 import "@fontsource/inter/500.css"
 import "@fontsource/inter/700.css"
+import SidePanel from "./Components/Common/SidePanel/SidePanel"
+import CrewScheduling from "./Components/CrewScheduling/CrewScheduling"
 
 const crewJson: Array<TCrewData> = [
   {
@@ -34,6 +36,9 @@ const App = () => {
       <Header />
       <Box className={styles.MainContainer}>
         <CrewCatalog />
+        <SidePanel>
+          <CrewScheduling />
+        </SidePanel>
       </Box>
     </Box>
   )
