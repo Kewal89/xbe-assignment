@@ -10,7 +10,7 @@ const SidePanel = ({ children }: { children: ReactNode }) => {
   }
 
   return (
-    <Drawer open={true || AppStore.sidePanel} onClose={onCloseDrawer} anchor="right">
+    <Drawer open={AppStore.sidePanel} onClose={onCloseDrawer} anchor="right">
       {children}
     </Drawer>
   )
